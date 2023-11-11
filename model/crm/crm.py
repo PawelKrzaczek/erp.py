@@ -15,7 +15,7 @@ LIST = data_manager.read_table_from_file(DATAFILE)
 
 
 def save_to_file():
-    data_manager.read_table_from_file(DATAFILE, LIST)
+    data_manager.write_table_to_file(DATAFILE, LIST)
 
 
 def add_customer(customer):
