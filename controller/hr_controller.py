@@ -3,39 +3,47 @@ from view import terminal as view
 
 
 def list_employees():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(hr.LIST, hr.HEADERS)
 
 
 def add_employee():
-    view.print_error_message("Not implemented yet.")
+    hr.add_employee(view.get_inputs(hr.HEADERS[1:]))
 
 
 def update_employee():
-    view.print_error_message("Not implemented yet.")
+    id_ = view.get_input("Select an id of transaction")
+    line = hr.include(id_)
+    if line >= 0:
+        hr.update_employee(view.get_inputs(hr.HEADERS[1:]), line)
 
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
+    id_ = view.get_input("Select an id of transaction")
+    line = hr.include(id_)
+    if line >= 0:
+        hr.delete_employee(line)
 
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
+    hr.get_oldest_and_youngest()
 
 
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
+    hr.get_average_age()
 
 
 def next_birthdays():
-    view.print_error_message("Not implemented yet.")
+    data = view.get_input("Start date: ")
+    hr.next_birthdays(data)
 
 
 def count_employees_with_clearance():
-    view.print_error_message("Not implemented yet.")
+    level = view.get_input("Get clearance lvl: ")
+    hr.count_employees_with_clearance(level)
 
 
 def count_employees_per_department():
-    view.print_error_message("Not implemented yet.")
+    hr.count_employees_per_department()
 
 
 def run_operation(option):
@@ -58,6 +66,7 @@ def run_operation(option):
     elif option == 9:
         count_employees_per_department()
     elif option == 0:
+        hr.save_to_file()
         return
     else:
         raise KeyError("There is no such option.")

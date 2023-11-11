@@ -3,23 +3,29 @@ from view import terminal as view
 
 
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(crm.LIST, crm.HEADERS)
 
 
 def add_customer():
-    view.print_error_message("Not implemented yet.")
+    crm.add_customer(view.get_inputs(crm.HEADERS[1:]))
 
 
 def update_customer():
-    view.print_error_message("Not implemented yet.")
+    id = view.get_input("Select an id of customer")
+    line = crm.include(id)
+    if line >= 0:
+        crm.update_customer(view.get_inputs(crm.HEADERS[1:]), line)
 
 
 def delete_customer():
-    view.print_error_message("Not implemented yet.")
+    id = view.get_input("Select an id of customer")
+    line = crm.include(id)
+    if line >= 0:
+        crm.delete_customer(line)
 
 
 def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
+    print(crm.emails())
 
 
 def run_operation(option):
@@ -34,6 +40,7 @@ def run_operation(option):
     elif option == 5:
         get_subscribed_emails()
     elif option == 0:
+        crm.save_to_file()
         return
     else:
         raise KeyError("There is no such option.")

@@ -3,35 +3,45 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(sales.LIST, sales.HEADERS)
 
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
+    sales.add_transaction(view.get_inputs(sales.HEADERS[1:]))
 
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
+    id_ = view.get_input("Select an id of transaction")
+    line = sales.include(id_)
+    if line >= 0:
+        sales.update_transaction(view.get_inputs(sales.HEADERS[1:]), line)
 
 
 def delete_transaction():
-    view.print_error_message("Not implemented yet.")
+    id_ = view.get_input("Select an id of transaction")
+    line = sales.include(id_)
+    if line >= 0:
+        sales.delete_transaction(line)
 
 
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
+    view.print_table(sales.biggest_transaction())
 
 
 def get_biggest_revenue_product():
-    view.print_error_message("Not implemented yet.")
+    sales.biggest_product()
 
 
 def count_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    data_start = view.get_input("Start date: ")
+    data_end = view.get_input("End date: ")
+    sales.count_between(data_start, data_end)
 
 
 def sum_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    data_start = view.get_input("Start date: ")
+    data_end = view.get_input("End date: ")
+    sales.sum_between(data_start, data_end)
 
 
 def run_operation(option):
@@ -52,6 +62,7 @@ def run_operation(option):
     elif option == 8:
         sum_transactions_between()
     elif option == 0:
+        sales.save_to_file()
         return
     else:
         raise KeyError("There is no such option.")
