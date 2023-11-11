@@ -1,0 +1,18 @@
+secure_erp/
+├── common/
+│   ├── model.py
+│   ├── controller.py
+│   └── view.py
+├── crm/
+│   ├── model.py
+│   ├── controller.py
+│   └── view.py
+├── sales/
+│   ├── model.py
+│   ├── controller.py
+│   └── view.py
+├── hr/
+│   ├── model.py
+│   ├── controller.py
+│   └── view.py
+├── main.py

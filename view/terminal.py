@@ -1,4 +1,5 @@
 def print_menu(title, list_options):
+
     """Prints options in standard menu format like this:
 
     Main menu:
@@ -11,7 +12,10 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    pass
+    print(f"{title}:")
+    for i, elem in enumerate(list_options):
+        print(f"({i}) {elem}")
+    print()
 
 
 def print_message(message):
@@ -20,7 +24,7 @@ def print_message(message):
     Args:
         message: str - the message
     """
-    pass
+    print(message, "\n")
 
 
 def print_general_results(result, label):
@@ -29,7 +33,11 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+    print("\t".join(elem for elem in label))
+    for row in result:
+        for elem in row:
+            print(elem, end="\t")
+        print()
 
 
 # /--------------------------------\
@@ -45,7 +53,13 @@ def print_table(table):
     Args:
         table: list of lists - the table to print out
     """
-    pass
+    print("/--------------------------------\\")
+    for row in table:
+        print("|", end="")
+        for elem in row:
+            print(f"\t{elem}\t|", end="")
+            print("|--------|------------|----------|")
+        print()
 
 
 def get_input(label):
@@ -54,7 +68,8 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    pass
+    inp = input(f"{label}: ")
+    return inp
 
 
 def get_inputs(labels):
@@ -63,7 +78,7 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    pass
+    return [ input(f"{elem}: ") for elem in labels ]
 
 
 def print_error_message(message):
@@ -72,4 +87,4 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
+    print(message, "\n")
