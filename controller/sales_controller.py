@@ -26,7 +26,8 @@ def delete_transaction():
 
 
 def get_biggest_revenue_transaction():
-    view.print_table(sales.biggest_transaction())
+    result = sales.biggest_transaction()
+    view.print_general_results(result[0], result[1])
 
 
 def get_biggest_revenue_product():
@@ -76,7 +77,7 @@ def display_menu():
                "Update transaction",
                "Remove transaction",
                "Get the transaction that made the biggest revenue",
-               "Get the product that made the biggest revenue altogether",
+               "Get the product that made the biggest revenue all together",
                "Count number of transactions between",
                "Sum the price of transactions between"]
     view.print_menu("Sales", options)

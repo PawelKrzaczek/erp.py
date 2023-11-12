@@ -3,7 +3,8 @@ from view import terminal as view
 
 
 def list_employees():
-    view.print_general_results(hr.LIST, hr.HEADERS)
+    view.print_table(hr.LIST, hr.HEADERS)
+    # view.print_general_results(hr.LIST, hr.HEADERS)
 
 
 def add_employee():
@@ -25,7 +26,7 @@ def delete_employee():
 
 
 def get_oldest_and_youngest():
-    hr.get_oldest_and_youngest()
+    view.print_general_results(hr.get_oldest_and_youngest()[0], hr.get_oldest_and_youngest()[1])
 
 
 def get_average_age():
@@ -35,15 +36,18 @@ def get_average_age():
 def next_birthdays():
     data = view.get_input("Start date: ")
     hr.next_birthdays(data)
+    view.print_general_results(hr.next_birthdays(data)[0], hr.next_birthdays(data)[1])
 
 
 def count_employees_with_clearance():
     level = view.get_input("Get clearance lvl: ")
-    hr.count_employees_with_clearance(level)
+    result = hr.count_employees_with_clearance(level)
+    view.print_general_results(result[0], result[1])
 
 
 def count_employees_per_department():
-    hr.count_employees_per_department()
+    result = hr.count_employees_per_department()
+    view.print_general_results(result[0], result[1])
 
 
 def run_operation(option):

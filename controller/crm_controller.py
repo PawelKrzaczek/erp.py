@@ -3,7 +3,8 @@ from view import terminal as view
 
 
 def list_customers():
-    view.print_general_results(crm.LIST, crm.HEADERS)
+    view.print_table(crm.LIST, crm.HEADERS)
+    # view.print_general_results(crm.LIST, crm.HEADERS)
 
 
 def add_customer():
@@ -11,21 +12,21 @@ def add_customer():
 
 
 def update_customer():
-    id = view.get_input("Select an id of customer")
-    line = crm.include(id)
+    id_ = view.get_input("Select an id of customer")
+    line = crm.include(id_)
     if line >= 0:
         crm.update_customer(view.get_inputs(crm.HEADERS[1:]), line)
 
 
 def delete_customer():
-    id = view.get_input("Select an id of customer")
-    line = crm.include(id)
+    id_ = view.get_input("Select an id of customer")
+    line = crm.include(id_)
     if line >= 0:
         crm.delete_customer(line)
 
 
 def get_subscribed_emails():
-    print(crm.emails())
+    view.print_general_results(crm.emails()[0], crm.emails()[1])
 
 
 def run_operation(option):

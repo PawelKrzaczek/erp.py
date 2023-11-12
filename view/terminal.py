@@ -33,11 +33,9 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    print("\t".join(elem for elem in label))
-    for row in result:
-        for elem in row:
-            print(elem, end="\t")
-        print()
+    for row in range(len(label)):
+        print(label[row], end=": ")
+        print(result)
 
 
 # /--------------------------------\
@@ -47,19 +45,28 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-def print_table(table):
+def print_table(table, headers):
     """Prints tabular data like above.
 
     Args:
         table: list of lists - the table to print out
     """
-    print("/--------------------------------\\")
+    table.insert(0, headers)
+    max_widths = [max(len(str(elem)) for elem in column) for column in zip(*table)]
+    znak = "-"
+    wynik = znak*sum(max_widths)+znak*(len(max_widths)*4)+znak*(len(max_widths)-1)
+    print(f"/{wynik}\\")
     for row in table:
         print("|", end="")
-        for elem in row:
-            print(f"\t{elem}\t|", end="")
-            print("|--------|------------|----------|")
+        for elem, width in zip(row, max_widths):
+            print(f"   {elem: <{width}} |", end="")
         print()
+        print("|", end="")
+        for elem, width in zip(row, max_widths):
+            wynik = znak * width
+            print(f"---{wynik}-|", end="")
+        print()
+    table.pop(0)
 
 
 def get_input(label):
