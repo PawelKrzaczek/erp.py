@@ -3,7 +3,8 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_general_results(sales.LIST, sales.HEADERS)
+    view.print_table(sales.LIST_SALES, sales.HEADERS)
+    # view.print_general_results(sales.LIST_SALES, sales.HEADERS)
 
 
 def add_transaction():

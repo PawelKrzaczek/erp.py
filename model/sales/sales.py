@@ -106,7 +106,7 @@ def count_between(data_start, data_end):
 def sum_between(data_start, data_end):
     sum_ = 0
 
-    for row in LIST:
+    for row in LIST_SALES:
         if date_between(data_start, data_end, row[4]):
             sum_ += row[3]
     print(f"Sum transaction between is: {sum_}")
