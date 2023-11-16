@@ -66,14 +66,14 @@ def get_average_age():
 
 
 def next_birthdays(data):
-    BIRTHDAY = []
+    birthday = []
     date_format = '%Y-%m-%d'
     for row in LIST:
         date1 = datetime.strptime(row[2], date_format)
         date2 = datetime.strptime(data, date_format)
         if (date1 - date2).days <= 14:
-            BIRTHDAY.append(row[1])
-    return [BIRTHDAY, [HEADERS[2]]]
+            birthday.append(row[1])
+    return [birthday, [HEADERS[2]]]
 
 
 def count_employees_with_clearance(level):

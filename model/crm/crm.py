@@ -24,9 +24,9 @@ def add_customer(customer):
     LIST.append(customer)
 
 
-def include(id):
+def include(id_):
     for i, row in enumerate(LIST):
-        if id in row:
+        if id_ in row:
             return i
     return -1
 
@@ -46,4 +46,4 @@ def emails():
     for row in LIST:
         if '1' in row:
             email.append(row[2])
-    return email
+    return [email, [HEADERS[2]]]
