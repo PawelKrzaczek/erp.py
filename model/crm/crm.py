@@ -46,4 +46,4 @@ def emails():
     for row in LIST:
         if '1' in row:
             email.append(row[2])
-    return [email, [HEADERS[2]]]
+    return email, [HEADERS[2]]

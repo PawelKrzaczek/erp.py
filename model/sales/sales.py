@@ -30,7 +30,7 @@ def include(id_):
     for i, row in enumerate(LIST_SALES):
         if id_ in row:
             return i
-    return -1
+    return None
 
 
 def update_transaction(transaction, line):
@@ -60,7 +60,7 @@ def biggest_product():
             max_revenue[row[2]] += float(row[3])
 
     top_product = max(max_revenue, key=max_revenue.get)
-    print(f"The top product is {top_product} with score of {max_revenue[top_product]}")
+    return [top_product, max_revenue[top_product]], [HEADERS[2], HEADERS[3]]
 
 
 def date_between(data_start, data_end, data_middle):
@@ -100,7 +100,7 @@ def count_between(data_start, data_end):
     for row in LIST_SALES:
         if date_between(data_start, data_end, row[4]):
             count += 1
-    print(f"Count date between is: {count}")
+    return [count], ["DAYS"]
 
 
 def sum_between(data_start, data_end):
@@ -109,4 +109,4 @@ def sum_between(data_start, data_end):
     for row in LIST_SALES:
         if date_between(data_start, data_end, row[4]):
             sum_ += float(row[3])
-    print(f"Sum transaction between is: {sum_}")
+    return [sum_], ["SUM"]

@@ -35,7 +35,8 @@ def print_general_results(result, label):
     """
     for row in range(len(label)):
         print(label[row], end=": ")
-        print(result)
+        print(result[row])
+        print()
 
 
 # /--------------------------------\

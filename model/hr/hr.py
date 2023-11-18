@@ -55,14 +55,14 @@ def get_oldest_and_youngest():
             max_ = row
         elif date2 > date3:
             min_ = row
-    return [[max_, min_], ["YOUNGEST", "OLDEST"]]
+    return [max_, min_], ["YOUNGEST", "OLDEST"]
 
 
 def get_average_age():
     sum_ = 0
     for row in LIST:
         sum_ += 2023 - int(row[2][:4])
-    print("Average:", sum_/len(LIST))
+    return [sum_/len(LIST)], ["Average"]
 
 
 def next_birthdays(data):
@@ -73,7 +73,7 @@ def next_birthdays(data):
         date2 = datetime.strptime(data, date_format)
         if (date1 - date2).days <= 14:
             birthday.append(row[1])
-    return [birthday, [HEADERS[2]]]
+    return birthday, [HEADERS[2]]
 
 
 def count_employees_with_clearance(level):
@@ -81,7 +81,7 @@ def count_employees_with_clearance(level):
     for elem in LIST:
         if int(elem[4]) >= int(level):
             greater_tha_level += 1
-    return [[greater_tha_level], ["greater_tha_level"]]
+    return [greater_tha_level], ["greater_tha_level"]
 
 
 def count_employees_per_department():
@@ -91,4 +91,4 @@ def count_employees_per_department():
             company[row[3]] = 1
         else:
             company[row[3]] += 1
-    return [company, [HEADERS[3]]]
+    return [company], [HEADERS[3]]

@@ -30,13 +30,14 @@ def get_oldest_and_youngest():
 
 
 def get_average_age():
-    hr.get_average_age()
+    result = hr.get_average_age()
+    view.print_general_results(result[0], result[1])
 
 
 def next_birthdays():
     data = view.get_input("Start date: ")
-    hr.next_birthdays(data)
-    view.print_general_results(hr.next_birthdays(data)[0], hr.next_birthdays(data)[1])
+    result = hr.next_birthdays(data)
+    view.print_general_results(result[0], result[1])
 
 
 def count_employees_with_clearance():

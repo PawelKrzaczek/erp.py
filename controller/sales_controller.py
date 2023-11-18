@@ -31,19 +31,22 @@ def get_biggest_revenue_transaction():
 
 
 def get_biggest_revenue_product():
-    sales.biggest_product()
+    result = sales.biggest_product()
+    view.print_general_results(result[0], result[1])
 
 
 def count_transactions_between():
     data_start = view.get_input("Start date: ")
     data_end = view.get_input("End date: ")
-    sales.count_between(data_start, data_end)
+    result = sales.count_between(data_start, data_end)
+    view.print_general_results(result[0], result[1])
 
 
 def sum_transactions_between():
     data_start = view.get_input("Start date: ")
     data_end = view.get_input("End date: ")
-    sales.sum_between(data_start, data_end)
+    result = sales.sum_between(data_start, data_end)
+    view.print_general_results(result[0], result[1])
 
 
 def run_operation(option):

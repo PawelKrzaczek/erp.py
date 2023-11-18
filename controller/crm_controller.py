@@ -26,7 +26,8 @@ def delete_customer():
 
 
 def get_subscribed_emails():
-    view.print_general_results(crm.emails()[0], crm.emails()[1])
+    result = crm.emails()
+    view.print_general_results(result[0], result[1])
 
 
 def run_operation(option):
